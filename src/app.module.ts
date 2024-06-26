@@ -3,11 +3,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from "@nestjs/mongoose";
 import { EventoModule } from './Evento/evento.module';
+import 'dotenv/config';
 
+const URL = process.env.MONGODB;
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://ProyectosAutoma:proyectos12345@principal.qsckrkk.mongodb.net/Proyectos'),
+    MongooseModule.forRoot(URL),
     EventoModule
   ],
   controllers: [AppController],

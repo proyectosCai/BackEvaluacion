@@ -1,9 +1,11 @@
 import mongoose from "mongoose";
+import * as moment from "moment-timezone";
 
 
 export const EventoSchema = new mongoose.Schema({
     Nombre: String,
-    Fecha: Date,
+    Fecha: { type: String, default:()=>moment.tz(Date.now(),"America/Bogota").format('YYYY-MM-DD h:mm:ss  A') },
+    
     Proyecto: String,
     Ficha:String,   
     Evaluador:String,
@@ -15,7 +17,7 @@ export const EventoSchema = new mongoose.Schema({
 
 export interface IEvento extends mongoose.Document{
     Nombre: string,
-    Fecha: Date,
+    Fecha: Date;
     Proyecto: string,
     Ficha:string,
     Evaluador:string,
